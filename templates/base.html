@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Blog Generator 🧠✍️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            padding: 30px;
+            color: #333;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-left: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .spinner {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border: 5px solid lightgray;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .blog-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+
+        .blog-content h2 {
+            color: #343a40;
+            margin-top: 20px;
+        }
+
+        .blog-content ul {
+            padding-left: 20px;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+
+    <script>
+        function showSpinner() {
+            document.getElementById('spinner').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+
+    <h1>🚀 AI Blog Generator</h1>
+
+   
+    <form method="post" onsubmit="showSpinner()">
+        <input type="text" name="blog_topic" placeholder="Enter blog topic..." required>
+        <button type="submit">Generate Blog</button>
+    </form>
+    
+
+    <div id="spinner" class="spinner">
+        <div class="spinner-border"></div>
+        <p>Generating your blog, please wait...</p>
+    </div>
+
+    {% if error_message %}
+        <div class="error">{{ error_message }}</div>
+    {% endif %}
+
+    {% if blog_content %}
+        <div class="blog-content">
+            {{ blog_content|safe }}
+        </div>
+    {% endif %}
+
+</body>
+</html>
