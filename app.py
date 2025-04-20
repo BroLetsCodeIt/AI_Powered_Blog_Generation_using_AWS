@@ -26,7 +26,6 @@ s3 = boto3.client(
 # API Gateway endpoint
 API_URL = os.environ.get('API')
 
-
 @app.route('/', methods=['GET'])
 def homee():
     # Check if there's a blog content to show
